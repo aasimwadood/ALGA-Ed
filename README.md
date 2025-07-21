@@ -2,86 +2,104 @@
 
 ## Overview
 
-This repository contains the code for implementing **Adaptive Learning with Generative AI** to create **Customized Educational Aids** for students with disabilities. The system leverages the power of Generative AI to adapt learning materials according to the specific needs of students with visual disabilities.
+This repository implements **Adaptive Learning with Generative AI (ALGA-Ed)**, a novel educational framework tailored for students with disabilities. It integrates reinforcement learning, generative models (GPT, DALL·E, Whisper), and multimodal data inputs to deliver dynamically personalized and accessible educational content.
 
-The goal of this project is to provide personalized educational aids, improving accessibility and learning outcomes for students who require customized content.
+The goal is to improve learning outcomes, accessibility, and engagement through an AI-powered, inclusive learning environment.
 
-## Features
+## Key Features
 
-- **Adaptive Learning System**: Utilizes AI to adapt educational content based on the student's progress and learning style.
-- **Generative AI Models**: Generate customized visual aids for students with visual impairments, including text-to-image and image-to-text features.
-- **Personalized Educational Content**: The system generates and customizes educational content for students with disabilities, ensuring that it suits their specific learning needs.
-- **User-Centric Design**: The interface and content delivery are designed to be intuitive and accessible for all users.
+- **Reinforcement Learning (RL) Module**: Dynamically adjusts content difficulty based on student engagement and performance.
+- **Multimodal Generative AI**: Uses GPT for text, DALL·E for visual aids, and Whisper for audio synthesis.
+- **User Profiling & Assistive Tech**: Supports eye-tracking, Braille, and haptic inputs for real-time user feedback.
+- **Synthetic Data Simulation**: Simulates learning patterns for students with disabilities (e.g., ADHD, dyslexia, visual impairment).
+- **Visual Engagement Analytics**: Generates visualizations of learning behavior segmented by disability type.
+- **Streamlit UI (User-Centric Design)**: Intuitive interface to input learning materials and deliver customized aids.
 
 ## Installation
 
 ### Prerequisites
 
-Before using this code, ensure that the following are installed:
-
-- Python 3.x
+- Python 3.8+
 - PyTorch
 - Transformers
 - NumPy
 - Matplotlib
-- Other required libraries (listed in requirements.txt)
+- Scikit-learn
+- Streamlit
+- Other dependencies in `requirements.txt`
 
 ### Steps to Install
 
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/aasimwadood/adaptive-learning-generative-ai.git
-   cd adaptive-learning-generative-ai  
-
-2. Install dependencies:
-
-   ```bash
-   pip install -r requirements.txt  
-
-3. Ensure that you have the necessary AI models downloaded (refer to the Model Documentation section for more details).
+```bash
+git clone https://github.com/aasimwadood/ALGA-Ed.git
+cd ALGA-Ed
+pip install -r requirements.txt
+```
 
 ## Usage
-1. **Train the AI Model**: To train the model on the provided dataset:
 
-    ```bash
-    python train_model.py --config config.yaml 
-  
-2. **Generate Customized Educational Aids**: Use the following command to generate educational content:
+### 1. Train the AI Model
 
-    ```bash
-    python generate_aid.py --input "input_text_or_image" --output "output_path" 
+```bash
+python train_model.py --config config.yaml
+```
 
-3. **Evaluate the System**: To evaluate the performance of the model:
+### 2. Generate Customized Educational Aids
 
-    ```bash
-    python evaluate_model.py --input "test_data_path" 
+```bash
+python generate_aid.py --input "input_text_or_image" --output "output_path"
+```
 
-## Code and Data Availability
-The code and dataset for this project will be made publicly available after the publication of the associated research article. Please stay tuned for updates and the official release.
+### 3. Evaluate the System
 
-Once the article is published, you will be able to access the complete source code, pretrained models, and dataset through this repository.
+```bash
+python evaluate_model.py --input "test_data_path"
+```
 
-## Model Documentation
-The core AI model consists of a Generative Adversarial Network (GAN) that is trained on a dataset of educational materials tailored for students with visual disabilities. The model adapts content dynamically based on individual student needs, using a combination of text, images, and other multimedia elements.
+### 4. Run the Streamlit UI
 
-## Model Architecture
-**Generator**: Responsible for creating customized educational content.
-**Discriminator**: Evaluates the authenticity of the generated content.
-**Adaptive Learning Algorithm**: Adjusts content generation based on the student’s progress.
-## Data
-The dataset used to train the model includes various educational materials and visual aids. For privacy and ethical reasons, the dataset is anonymized and contains only publicly available educational resources. The data will be made available after the publication of the article.
+```bash
+streamlit run interface_app.py
+```
 
-## Contributing
-We welcome contributions from the community. If you’d like to contribute, please fork this repository and submit a pull request with your proposed changes.
+## Directory Structure
 
-Please ensure that your changes adhere to the coding standards and include appropriate tests.
+```
+ALGA-Ed/
+│
+├── train_model.py              # Model training
+├── generate_aid.py             # Generates AI-powered content
+├── evaluate_model.py           # Evaluation logic
+├── preprocess.py               # Preprocessing input data
+├── models.py                   # Model definitions
+├── data_loader/                # Dataset loaders for EdNet and ASSISTments
+├── config.yaml                 # Training configuration
+├── interface_app.py            # Streamlit UI
+├── synthetic_data_generator.py # For simulating disabilities
+├── requirements.txt
+├── README.md
+```
 
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+## Datasets
+
+- **EdNet**: [https://github.com/riiid/ednet](https://github.com/riiid/ednet)
+- **ASSISTments**: [https://www.assistments.org](https://www.assistments.org)
+- **Synthetic Disability Data**: [https://github.com/aasimwadood/ALGA-Ed](https://github.com/aasimwadood/ALGA-Ed)
+
+Datasets are anonymized and comply with GDPR and HIPAA standards.
+
+## Evaluation Metrics
+
+- Learning gain (pre-/post-test)
+- Engagement rate
+- Content adaptability ratio
+- Accessibility usability score
 
 ## Contact
-For any inquiries, feel free to contact us at:
 
-Email: aasim.wadood@gmail.com
-GitHub: https://github.com/aasimwadood/
+Email: aasim.wadood@gmail.com  
+GitHub: [aasimwadood](https://github.com/aasimwadood)
+
+## License
+
+MIT License
