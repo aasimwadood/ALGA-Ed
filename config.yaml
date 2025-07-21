@@ -1,0 +1,4 @@
+
+data_path: "data/sample.csv"
+model_save_path: "outputs/model.pth"
+epochs: 5

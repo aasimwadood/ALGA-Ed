@@ -1,0 +1,11 @@
+torch
+transformers
+openai
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+librosa
+soundfile
+PyYAML
