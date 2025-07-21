@@ -3,9 +3,9 @@ import argparse
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
-from scripts.models import ALGAEdModel
-from scripts.preprocess import preprocess_dataset
-from sklearn.model_selection import train_test_split
+from models import ALGAEdModel
+from preprocess import preprocess_dataset
+from model_selection import train_test_split
 import pandas as pd
 import os
 
