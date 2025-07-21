@@ -153,7 +153,7 @@ def load_dataset(name):
 def main():
     init_db()
     st.set_page_config(page_title="ALGA-Ed Demo", layout="wide")
-    st.title("📚 ALGA-Ed: Adaptive Learning for Disabilities")
+    st.title("ALGA-Ed: Adaptive Learning for Disabilities")
 
     with st.sidebar:
         st.header("👤 User Login")
@@ -202,6 +202,27 @@ def main():
     dataset_name = st.selectbox("Choose dataset", ["ednet_sample", "assistments_sample"])
     df = load_dataset(dataset_name)
     st.dataframe(df)
+
+    st.subheader("📈 Your Progress Chart")
+    if user_progress:
+        chart_data = pd.DataFrame({"Topic": list(user_progress.keys()), "Score": list(user_progress.values())})
+        st.bar_chart(chart_data.set_index("Topic"))
+
+    st.subheader("🔁 Retest Suggestions")
+    weak_topics = [t for t, s in user_progress.items() if s < 0.6]
+    if weak_topics:
+        st.warning(f"Consider retesting on: {', '.join(weak_topics)}")
+        if st.button("Retest Me On a Weak Topic"):
+            retest_topic = random.choice(weak_topics)
+            st.info(f"Retesting Topic: {retest_topic}")
+            retest_quiz = generate_quiz(retest_topic)
+            st.text_area("Retest Quiz", retest_quiz, height=200)
+
+    st.subheader("🧑‍🏫 Caregiver Notes")
+    caregiver_note = st.text_area("Leave notes or observations for this student")
+    if st.button("Save Note"):
+        st.success("Note saved (mock save, not yet linked to DB).")
+
 
 if __name__ == "__main__":
     main()
