@@ -1,21 +1,18 @@
-import argparse
-import openai
 
-openai.api_key = "sk-..."
+import torch
+from transformers import pipeline
 
-def generate_text(prompt):
-    response = openai.ChatCompletion.create(
-        model="gpt-4",
-        messages=[{"role": "user", "content": prompt}]
-    )
-    return response.choices[0].message["content"]
-
-def main(input_text):
-    result = generate_text(input_text)
-    print("Generated Aid:", result)
+def generate_aid(input_text, output_path):
+    generator = pipeline("text-generation", model="gpt2")
+    output = generator(input_text, max_length=100)[0]["generated_text"]
+    with open(output_path, "w") as f:
+        f.write(output)
+    print(f"Generated aid saved to {output_path}")
 
 if __name__ == "__main__":
+    import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument("--input", required=True)
+    parser.add_argument("--input", type=str, required=True)
+    parser.add_argument("--output", type=str, required=True)
     args = parser.parse_args()
-    main(args.input)
+    generate_aid(args.input, args.output)
