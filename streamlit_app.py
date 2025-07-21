@@ -1,9 +1,9 @@
 
 import streamlit as st
-from scripts.generate_aid import generate_aid
-from scripts.evaluate_model import evaluate_model
-from scripts.train_model import train
-from utils.preprocess import preprocess_data
+from generate_aid import generate_aid
+from evaluate_model import evaluate_model
+from train_model import train
+from preprocess import preprocess_data
 
 st.set_page_config(page_title="ALGA-Ed AI Learning Aid", layout="centered")
 
