@@ -4,7 +4,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from utils import preprocess
-from models.models import EngagementPredictor
+from models import EngagementPredictor
 
 def main(config_path):
     with open(config_path, "r") as f:
