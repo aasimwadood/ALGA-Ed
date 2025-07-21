@@ -1,7 +1,7 @@
 import argparse
 import torch
 from utils import preprocess
-from models.models import EngagementPredictor
+from models import EngagementPredictor
 
 def main(test_path, model_path):
     X, y = preprocess.load_data(test_path)
